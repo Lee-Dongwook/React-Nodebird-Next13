@@ -9,8 +9,22 @@ const path = require("path");
 const hpp = require("hpp");
 const helmet = require("helmet");
 
+const postRouter = require("./routes/posts.js");
+const postsRouter = require("./routes/posts");
+const userRouter = require("./routes/user");
+const hashtagRouter = require("./routes/hashtag");
+const db = require("./models");
+const passportConfig = require("./passport");
+
 dotenv.config();
 const app = express();
+db.sequelize
+  .sync()
+  .then(() => {
+    console.log("db 연결 성공");
+  })
+  .catch(console.error);
+passportConfig();
 
 if (process.env.NODE_ENV === "production") {
   app.use(morgan("combined"));
@@ -54,6 +68,11 @@ app.use(passport.session());
 app.get("/", (req, res) => {
   res.send("hello express");
 });
+
+app.use("/posts", postsRouter);
+app.use("/post", postRouter);
+app.use("/user", userRouter);
+app.use("/hashtag", hashtagRouter);
 
 app.listen(4000, () => {
   console.log("서버 실행 중!");
