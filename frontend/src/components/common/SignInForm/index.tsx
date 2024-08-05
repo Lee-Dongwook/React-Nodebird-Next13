@@ -24,7 +24,7 @@ function SignInForm() {
             required
             id="outlined-required"
             type="password"
-            label="이메일"
+            label="비밀번호"
           />
         </Grid>
         <Grid item xs={12}>
