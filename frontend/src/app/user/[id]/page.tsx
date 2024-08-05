@@ -1,4 +1,4 @@
-import Tweet from "@/components/common/Tweets";
+import Tweet from "@/components/Tweets";
 import React from "react";
 
 const UserTweetPage = () => {
