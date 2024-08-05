@@ -1,4 +1,4 @@
-import Tweet from "@/components/common/Tweet";
+import Tweet from "@/components/common/Tweets";
 import React from "react";
 
 const PostPage = () => {
